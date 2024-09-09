@@ -104,7 +104,7 @@ export const useProductStore = create((set) => ({
   },
 
   insertFeedback: (feed) => {
-    console.log("call this function");
+  
 
     set((state) => ({
       feedBack: [feed, ...state.feedBack], // Insert the new feedback at the beginning of the array

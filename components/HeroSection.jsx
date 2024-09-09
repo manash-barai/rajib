@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const HeroSection = () => {
     return (
         <div className="  heroSection mx-auto py-16">
@@ -7,7 +9,7 @@ const HeroSection = () => {
           <h1 className="text-4xl font-bold text-gray-100">Discover the Best Products</h1>
           <p className="mt-4 text-lg text-gray-50">Shop the latest trends and find your perfect style.</p>
           <div className="mt-8">
-            <button className="px-8 py-3 bg-blue-600 text-white rounded-full hover:bg-blue-700">Shop Now</button>
+            <Link href={'/products'} className="px-8 py-3 bg-blue-600 text-white rounded-full hover:bg-blue-700">Shop Now</Link>
           </div>
         </div>
       </section>
