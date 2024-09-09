@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 const Page = async () => {
 
-  // Use fetchProducts to get the data and rename the variable to productList
+ 
   const productList = await fetchProducts(1, 10);
 
   return (
