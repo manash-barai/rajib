@@ -1,12 +1,11 @@
-"use client"
 import { getAllFeatureProduct } from "@/lib/getAllFeatureProduct";
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import BuyOption from "./BuyOption";
 
 const FeaturedProducts = async () => {
   const featureProducts = await getAllFeatureProduct();
-
+  
   return (
     <section className="py-16">
       <div className="mx-auto max-w-7xl">
@@ -34,8 +33,8 @@ const FeaturedProducts = async () => {
                 <p className="text-gray-600">Price: {product.newPrice}/-</p>
               </div>
               <div className="flex gap-3">
-                <Link className="bg-slate-800 text-white px-3 py-2 rounded" href="#">Buy Now</Link>
-                <Link className="bg-slate-800 text-white px-3 py-2 rounded" href="#">Add to Cart</Link>
+                <BuyOption product={product} />
+                
                 <Link className="bg-slate-800 text-white px-3 py-2 rounded" href={`/product/${product._id}`}>More</Link>
               </div>
             </div>

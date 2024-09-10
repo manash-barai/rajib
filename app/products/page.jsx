@@ -2,6 +2,7 @@ import React from 'react';
 import { products as fetchProducts } from '@/lib/allProducts'; // Rename imported function to avoid conflict
 import Image from 'next/image';
 import Link from 'next/link';
+import BuyOption from '@/components/BuyOption';
 
 const Page = async () => {
 
@@ -33,8 +34,11 @@ const Page = async () => {
                <p className="text-gray-600">Price: {product.newPrice}/-</p>
              </div>
              <div className="flex gap-3">
-               <Link className="bg-slate-800 text-white px-3 py-2 rounded" href="#">Buy Now</Link>
-               <Link className="bg-slate-800 text-white px-3 py-2 rounded" href="#">Add to Cart</Link>
+               {/* <Link className="bg-slate-800 text-white px-3 py-2 rounded" href="/payment">Buy Now</Link>
+               <Link className="bg-slate-800 text-white px-3 py-2 rounded" href="#">Add to Cart</Link> */}
+              {product &&  <BuyOption product={product} />}
+
+
                <Link className="bg-slate-800 text-white px-3 py-2 rounded" href={`/product/${product._id}`}>More</Link>
              </div>
            </div>

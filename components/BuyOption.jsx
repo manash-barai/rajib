@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import Bag from "./Bag";
+import Link from "next/link";
 
 const BuyOption = ({ product }) => {
   const [bagToggle, setBagToggle] = useState(false);
@@ -29,9 +30,9 @@ const BuyOption = ({ product }) => {
       >
         ADD TO BAG
       </button>
-      <button className="py-2 px-3 border-dashed bg-gray-700 text-white font-semibold">
+      <Link href={"/payment"} className="py-2 px-3 border-dashed bg-gray-700 text-white font-semibold">
         BUY NOW
-      </button>
+      </Link>
     </div>
   );
 };
