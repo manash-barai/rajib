@@ -1,9 +1,10 @@
+
 import { getAllFeatureProduct } from "@/lib/getAllFeatureProduct";
-import Image from "next/image";
-import Link from "next/link";
-import BuyOption from "./BuyOption";
+
+import ProductCards from "./ProductCards";
 
 const FeaturedProducts = async () => {
+
   const featureProducts = await getAllFeatureProduct();
   
   return (
@@ -14,30 +15,7 @@ const FeaturedProducts = async () => {
         </h2>
         <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {featureProducts && featureProducts.featureProduct && featureProducts.featureProduct.map((product) => (
-            <div key={product._id} className="bg-white shadow-md themeColor1 rounded-lg p-3 border border-gray-400">
-              <div className="relative w-full h-48">
-                <Image
-                  src={product.image1.url}
-                  alt={product.name}
-                  layout="fill"
-                  objectFit="contain"
-                  objectPosition="center"
-                  className="mb-4"
-                />
-              </div>
-
-              <div className="bg-gray-800 p-4 my-2 rounded">
-                <h3 className="text-lg font-thin text-gray-100 capitalize">
-                  {product.name}
-                </h3>
-                <p className="text-gray-600">Price: {product.newPrice}/-</p>
-              </div>
-              <div className="flex gap-3">
-                <BuyOption product={product} />
-                
-                <Link className="bg-slate-800 text-white px-3 py-2 rounded" href={`/product/${product._id}`}>More</Link>
-              </div>
-            </div>
+           <ProductCards product={product}/>
           ))}
         </div>
       </div>

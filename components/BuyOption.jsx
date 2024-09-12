@@ -31,7 +31,7 @@ const BuyOption = ({ product }) => {
     <div className="flex mt-5 gap-4">
       <Bag bagToggle={bagToggle} bagToggles={bagToggles} />
       <button
-        className="py-2 px-3 border-dashed bg-gray-100"
+        className="py-2 px-3 rounded border-dashed bg-gray-100"
         onClick={() => {
           addProductToCart();  
           bagToggles();       
@@ -41,7 +41,7 @@ const BuyOption = ({ product }) => {
       </button>
       <button
         onClick={handleBuyNow}
-        className="py-2 px-3 border-dashed bg-gray-700 text-white font-semibold"
+        className="py-2 px-3 border-dashed rounded bg-gray-700 text-white font-semibold"
       >
         BUY NOW
       </button>
