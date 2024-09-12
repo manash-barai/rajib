@@ -33,8 +33,8 @@ const BuyOption = ({ product }) => {
       <button
         className="py-2 px-3 border-dashed bg-gray-100"
         onClick={() => {
-          addProductToCart();  // Correctly call the function
-          bagToggles();        // Correctly call the function
+          addProductToCart();  
+          bagToggles();       
         }}
       >
         ADD TO BAG

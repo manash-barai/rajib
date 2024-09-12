@@ -20,7 +20,7 @@ const FeaturedProducts = async () => {
                   src={product.image1.url}
                   alt={product.name}
                   layout="fill"
-                  objectFit="cover"
+                  objectFit="contain"
                   objectPosition="center"
                   className="mb-4"
                 />

@@ -26,12 +26,12 @@ const Page = async ({ params }) => {
 
   return (
     <div className="mt-16 max-w-7xl mx-auto">
-      <div className="flex gap-11">
+      <div className=" lg:flex gap-11">
         <div className="flex-1">
           <SinglepageImage SinglepageImage={singleProducts} />
         </div>
 
-        <div className="w-96 border rounded px-3 py-1">
+        <div className="w-full lg:w-96 border rounded px-3 py-1 flex flex-col mx-auto">
           <div className="flex justify-between">
             <div>
               <h1 className="text-xl font-medium">{singleProducts.name}</h1>
@@ -101,11 +101,11 @@ const Page = async ({ params }) => {
         </div>
       </div>
 
-      <div className="mt-10 border-b pb-11 border-gray-400 flex justify-center flex-col">
+      <div className="mt-12 border-b pb-11 border-gray-400  flex justify-center flex-col">
         <h2 className="text-center text-2xl text-shadow themeColor1 border border-dashed border-white inline-block mx-auto py-2 text-white drop-shadow shadow px-3">
           Product Information
         </h2>
-        <ul className="flex gap-3 justify-center mt-5 text-xl">
+        <ul className="flex  flex-wrap gap-7   lg:justify-center justify-start px-3 mt-10 text-xl">
           <p className="text-gray-600">
             Brand:{" "}
             <span className="themeColor1 drop-shadow shadow text-white text-shadow border border-dashed border-white px-3 py-1">
@@ -127,13 +127,13 @@ const Page = async ({ params }) => {
         </ul>
       </div>
       <div className="mt-11 flex justify-center flex-col">
-        <h2 className="text-center text-2xl text-shadow themeColor1 border border-dashed border-white inline-block mx-auto py-2 text-white drop-shadow shadow px-3">
+        <h2 className="text-center text-2xl text-shadow themeColor1 border border-dashed border-white inline-block mx-auto py-2 text-white drop-shadow shadow px-3 mb-3">
           Product Description
         </h2>
         <p className="mt-3 text-gray-600">{singleProducts.description}</p>
       </div>
 
-      <div className="recent">
+      <div className="recent mt-11">
         <TestimonialSlider testimonials={customarFeedback} />
       </div>
     </div>
