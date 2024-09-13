@@ -55,7 +55,7 @@ const Bag = ({ bagToggle, bagToggles }) => {
                 </div>
                 <div className="flex items-center gap-3">
                   <p>₹{product.newPrice * quantity}</p>
-                  <button className='bg-red-500 h-full text-white px-2' onClick={() => removeProductFromCart(product._id)}>X</button>
+                  <button className='bg-red-500 h-full text-white px-2' onClick={(e) =>{  e.stopPropagation(); removeProductFromCart(product._id)}}>X</button>
                 </div>
               </div>
             ))}

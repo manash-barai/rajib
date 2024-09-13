@@ -44,7 +44,7 @@ const Page = () => {
   };
 
   return (
-    <div className="flex gap-10 w-auto mx-auto  px-32 py-9 justify-between h-[100vh]">
+    <div className="block lg:flex gap-10 w-auto mx-auto  px-4 lg:px-32 py-9 justify-between h-[100vh]">
       <div className="mt-14  flex flex-row   gap-3">
         {image && (
           <Image
@@ -63,7 +63,7 @@ const Page = () => {
       </div>
       <div className="py-5 ">
         {/* Progress Line */}
-        <ul className="line flex  float-end gap-32 relative outline-offset-8">
+        <ul className="line flex  float-start lg:float-end gap-32 relative outline-offset-8 justify-center ">
           <div className="absolute top-4 h-1 w-full bg-black"></div>
           <li
             className={`w-11 h-10 border border-black rounded-full p-3 flex justify-center items-center z-10 ${

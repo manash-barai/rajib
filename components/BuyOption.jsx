@@ -7,21 +7,24 @@ const BuyOption = ({ product }) => {
 
   const router = useRouter(); 
   const [bagToggle, setBagToggle] = useState(false);
-  const bagToggles = () => {
+  const bagToggles = (e) => {
+    e.stopPropagation();
     setBagToggle(!bagToggle);
   };
 
-  const addProductToCart = () => {
+  const addProductToCart = (e) => {
+    e.stopPropagation();
     const cart = JSON.parse(localStorage.getItem("cart") || "[]");
     cart.push(product);
     alert("Product added to cart!");
-    console.log(product);
+   
     localStorage.setItem("cart", JSON.stringify(cart));
   };
 
 
 
-  const handleBuyNow = () => {
+  const handleBuyNow = (e) => {
+    e.stopPropagation();
     // Programmatically navigate to the payment page with product details
     router.push(`/payment?name=${product.name}&price=${product.newPrice}&image=${product.image1.url}`);
   };
@@ -32,9 +35,9 @@ const BuyOption = ({ product }) => {
       <Bag bagToggle={bagToggle} bagToggles={bagToggles} />
       <button
         className="py-2 px-3 rounded border-dashed bg-gray-100"
-        onClick={() => {
-          addProductToCart();  
-          bagToggles();       
+        onClick={(e) => {
+          addProductToCart(e);  
+          bagToggles(e);       
         }}
       >
         ADD TO BAG
