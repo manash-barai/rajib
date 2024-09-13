@@ -5,7 +5,7 @@ import Image from "next/image";
 import { RiWhatsappFill } from "react-icons/ri";
 
 const Page = () => {
-  const searchParams = useSearchParams(); // Retrieve query parameters
+  const searchParams = useSearchParams(); 
   const name = searchParams.get("name");
   const price = searchParams.get("price");
   const image = searchParams.get("image");
@@ -64,24 +64,24 @@ const Page = () => {
       <div className="py-5 ">
         {/* Progress Line */}
         <ul className="line flex  float-start lg:float-end gap-32 relative outline-offset-8 justify-center ">
-          <div className="absolute top-4 h-1 w-full bg-black"></div>
+          <div className="absolute top-4 h-1 w-full themeColor1"></div>
           <li
-            className={`w-11 h-10 border border-black rounded-full p-3 flex justify-center items-center z-10 ${
-              currentStep >= 1 ? "bg-black text-white" : "bg-white"
+            className={`w-11 h-10 border  shadow-xl rounded-full p-3 flex justify-center items-center z-10 ${
+              currentStep >= 1 ? "themeColor1 text-white" : "bg-white"
             }`}
           >
             1
           </li>
           <li
-            className={`w-11 h-10 border border-black rounded-full p-3 flex justify-center items-center z-10 ${
-              currentStep >= 2 ? "bg-black text-white" : "bg-white"
+            className={`w-11 h-10 border shadow-xl rounded-full p-3 flex justify-center items-center z-10 ${
+              currentStep >= 2 ? "themeColor1 text-white" : "bg-white"
             }`}
           >
             2
           </li>
           <li
-            className={`w-11 h-10 border border-black rounded-full p-3 flex justify-center items-center z-10 ${
-              currentStep >= 3 ? "bg-black text-white" : "bg-white"
+            className={`w-11 h-10 border shadow-xl rounded-full p-3 flex justify-center items-center z-10 ${
+              currentStep >= 3 ? "themeColor1 text-white" : "bg-white"
             }`}
           >
             3
@@ -125,10 +125,10 @@ const Page = () => {
           )}
 
           {currentStep === 2 && (
-            <div className="flex-1 justify-center items-center ">
+            <div className="flex-1 justify-center items-center  ">
               <form
                 onSubmit={handleDeliverySubmit}
-                className="bg-white w-full p-4  rounded-lg shadow-lg"
+                className="bg-white w-full p-4  rounded-lg shadow-2xl shadow-[#2f3c64]"
               >
                 <h2 className="text-2xl font-bold mb-6 text-center">
                   Delivery Form
@@ -203,7 +203,7 @@ const Page = () => {
                 </div>
                 <button
                   type="submit"
-                  className="w-full bg-blue-500 text-white py-2 rounded-lg font-semibold hover:bg-blue-600 transition-colors"
+                  className="w-full themeColor1 text-white py-2 rounded-lg font-semibold hover:bg-blue-600 transition-colors"
                 >
                   Continue
                 </button>
@@ -212,7 +212,7 @@ const Page = () => {
           )}
 
           {currentStep === 3 && (
-            <div className="flex-1 justify-center items-center ">
+            <div className="flex-1 justify-center items-center shadow-2xl shadow-[#2c465f] ">
               <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-xl">
                 <h2 className="text-2xl font-bold mb-6">
                   Payment and Billing Details
@@ -265,7 +265,7 @@ const Page = () => {
                   <span className="font-bold text-lg">Total Amount: $190</span>
                   <button
                     onClick={handlePlaceOrder}
-                    className="bg-blue-500 text-white py-2 px-4 rounded-lg font-semibold hover:bg-blue-600 transition-colors"
+                    className="themeColor1 text-white py-2 px-4 rounded-lg font-semibold hover:bg-blue-600 transition-colors"
                   >
                     Place Order
                   </button>
