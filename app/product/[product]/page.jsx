@@ -10,19 +10,19 @@ import { customareFeedback } from "@/lib/customareFeedback";
 import { singleProduct } from "@/lib/singleProduct";
 import SinglepageImage from "@/components/SinglepageImage";
 
-const Page = async ({ params }) => {
+const Page =  async({params}) => {
   const { product } = params;
 
-  const customarFeedbackPromise = customareFeedback();
-  const singleProductsPromise = singleProduct({ product });
+  const singleProducts =await singleProduct({ product });
+  const customarFeedback =await customareFeedback();
 
 
   
 
-  const [customarFeedback, singleProducts] = await Promise.all([
-    customarFeedbackPromise,
-    singleProductsPromise,
-  ]);
+  // const [customarFeedback, singleProducts] = await Promise.all([
+  //   customarFeedbackPromise,
+  //   singleProductsPromise,
+  // ]);
 
   return (
     <div className="mt-16 max-w-7xl mx-auto">
@@ -139,6 +139,37 @@ const Page = async ({ params }) => {
     </div>
   );
 };
+
+export async function getServerSideProps({ params }) {
+  const { product } = params;
+
+  try {
+    // Fetch data using your API functions
+    const customarFeedbackPromise = customareFeedback();
+    const singleProductsPromise = singleProduct({ product });
+
+    const [customarFeedback, singleProducts] = await Promise.all([
+      customarFeedbackPromise,
+      singleProductsPromise,
+    ]);
+
+    return {
+      props: {
+        customarFeedback,
+        singleProducts,
+      },
+    };
+  } catch (error) {
+    console.error('Error fetching data:', error);
+
+    return {
+      props: {
+        customarFeedback: null,
+        singleProducts: null,
+      },
+    };
+  }
+}
 
 export async function generateMetadata({ params }) {
   const { product } = params;
