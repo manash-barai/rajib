@@ -15,6 +15,10 @@ export const useProductStore = create((set) => ({
     set((state) => ({
       quantity: state.quantity > 1 ? state.quantity - 1 : state.quantity,
     })),
+    setValueZero: () =>
+      set((state) => ({
+        quantity: 1,
+      })),
 
   fetchProducts: async () => {
     set({ loading: true });

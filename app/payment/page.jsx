@@ -66,6 +66,8 @@ const Page = () => {
     <div>
       <h2 className="text-lg font-bold">Name: {e.name && e.name}</h2>
       <p className="text-xl">Price: {e.price && e.price}/-</p>
+      <p className="text-xl">Quantity: {e.quantity && e.quantity}/-</p>
+      
     </div>
   </div>
 ))}

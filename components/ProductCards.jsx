@@ -8,7 +8,7 @@ const ProductCards = ({product}) => {
     const router = useRouter(); 
 
   return (
-    <div  className="bg-white cursor-pointer shadow-md themeColor1 rounded-lg p-3 border border-gray-400" onClick={()=>router.push(`/product/${product._id}`)}>
+    <div  className="bg-white cursor-pointer  shadow-md themeColor1 rounded-lg p-3 border border-gray-400" onClick={()=>router.push(`/product/${product._id}`)}>
     <div className="relative w-full h-56">
       <Image
         src={product.image1.url}

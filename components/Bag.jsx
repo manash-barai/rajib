@@ -3,9 +3,14 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import { FaCartArrowDown } from "react-icons/fa6";
+import { useRouter } from "next/navigation"; 
+import { useProductStore } from '@/usestore/store';
 
 const Bag = ({ bagToggle, bagToggles }) => {
+  
+
   const [cartSetting, setCartSetting] = useState([]);
+  const router = useRouter(); 
 
   useEffect(() => {
     const cart = JSON.parse(localStorage.getItem("cart") || "[]");
@@ -30,19 +35,38 @@ const Bag = ({ bagToggle, bagToggles }) => {
     localStorage.setItem("cart", JSON.stringify(updatedCart));
   };
 
+  const pushToPayment = (e) => {
+    e.preventDefault();  // Prevent any default behavior
+
+    // Collect all products and their quantities
+    const productsToSave = Object.values(groupedProducts).map(({ product, quantity }) => ({
+      name: product.name || "",
+      price: product.newPrice || "",
+      image: product.image1.url || "",
+      quantity: quantity,
+    }));
+    
+    // Save the product details in local storage
+    localStorage.setItem('paymentProduct', JSON.stringify(productsToSave));
+
+    // Always navigate to /payment
+    router.push(`/payment`);
+  };
+  
   return (
     <div
       style={{ background: "rgba(0,0,0,0.7)" }}
       className={`w-full top-0 ${bagToggle ? 'start-0' : '-start-[2000px]'} z-40 fixed h-[100vh] flex justify-end transition-transform duration-300`}
+      onClick={bagToggles}
     >
       <div className='w-[340px] bg-white py-4 px-4 flex flex-col justify-between'>
         <div className='flex flex-col'>
           <div className='flex items-center justify-between'>
             <div className='flex items-center gap-3'>
-              <FaCartArrowDown size={25} />
+              <FaCartArrowDown size={25} color='rgb(47, 60, 77)' />
               <p className='text-xl font-semibold text-slate-700'>My Bag</p>
             </div>
-            <button onClick={bagToggles}>X</button>
+            <button className='themeColor1 text-white rounded-full px-3 py-1' onClick={bagToggles}>X</button>
           </div>
 
           <div className="mt-4">
@@ -55,7 +79,7 @@ const Bag = ({ bagToggle, bagToggles }) => {
                 </div>
                 <div className="flex items-center gap-3">
                   <p>₹{product.newPrice * quantity}</p>
-                  <button className='bg-red-500 h-full text-white px-2' onClick={(e) =>{  e.stopPropagation(); removeProductFromCart(product._id)}}>X</button>
+                  <button className='bg-red-500 h-full text-white px-2' onClick={(e) => { e.stopPropagation(); removeProductFromCart(product._id); }}>X</button>
                 </div>
               </div>
             ))}
@@ -69,7 +93,9 @@ const Bag = ({ bagToggle, bagToggles }) => {
 
           <Link className='px-5 py-2 text-black border border-slate-500' href="#">View Bag</Link>
           <div className='mt-3'>
-            <button className='bg-slate-800 py-2 w-full text-white'>Check out</button>
+            <button className='bg-slate-800 py-2 w-full text-white' onClick={pushToPayment}>
+              Check out
+            </button>
           </div>
         </div>
       </div>

@@ -1,11 +1,11 @@
 "use client";
 import React, { useState } from "react";
 import Bag from "./Bag";
-import Link from "next/link";
 import { useRouter } from "next/navigation"; 
 import { useProductStore } from "@/usestore/store";
 const BuyOption = ({ product }) => {
-  const {payment_product}=useProductStore()
+  
+  const {payment_product,quantity,setValueZero}=useProductStore()
   const router = useRouter(); 
   const [bagToggle, setBagToggle] = useState(false);
   const bagToggles = (e) => {
@@ -16,9 +16,11 @@ const BuyOption = ({ product }) => {
   const addProductToCart = (e) => {
     e.stopPropagation();
     const cart = JSON.parse(localStorage.getItem("cart") || "[]");
-    cart.push(product);
-    alert("Product added to cart!");
-   
+
+    for (let i = 0; i < quantity; i++) {
+      cart.push(product);
+    }
+    setValueZero()
     localStorage.setItem("cart", JSON.stringify(cart));
   };
 
@@ -27,7 +29,7 @@ const BuyOption = ({ product }) => {
   const handleBuyNow = (e) => {
     e.stopPropagation();
     // Programmatically navigate to the payment page with product details
-    const data=[{name:product.name ||"",price:product.newPrice ||"",image:product.image1.url || ""}]
+    const data=[{name:product.name ||"",price:product.newPrice ||"",image:product.image1.url || "",quantity:1}]
     localStorage.setItem('paymentProduct', JSON.stringify(data));
     router.push(`/payment`);
   };
