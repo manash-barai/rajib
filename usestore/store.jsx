@@ -3,7 +3,6 @@ import { create } from 'zustand';
 export const useProductStore = create((set) => ({
   quantity: 1,
   products: [],
-  paymentProduct: [],
   feedBack: [],
   loading: false,
   featureProducts: [],
@@ -114,8 +113,5 @@ export const useProductStore = create((set) => ({
     }
   },
 
-  payment_product: (data) => {
-    console.log('Payment product data:', data);
-    set({ paymentProduct: data });
-  },
+ 
 }));

@@ -28,7 +28,7 @@ const BuyOption = ({ product }) => {
     e.stopPropagation();
     // Programmatically navigate to the payment page with product details
     const data=[{name:product.name ||"",price:product.newPrice ||"",image:product.image1.url || ""}]
-    payment_product(data)
+    localStorage.setItem('paymentProduct', JSON.stringify(data));
     router.push(`/payment`);
   };
 
