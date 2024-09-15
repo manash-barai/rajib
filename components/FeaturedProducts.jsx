@@ -1,11 +1,17 @@
 
-import { getAllFeatureProduct } from "@/lib/getAllFeatureProduct";
+"use client"
 
+import { useProductStore } from "@/usestore/store";
 import ProductCards from "./ProductCards";
+import { useEffect } from "react";
 
-const FeaturedProducts = async () => {
+const FeaturedProducts = () => {
+  const {featureProductGet,featureProducts}=useProductStore()
 
-  const featureProducts = await getAllFeatureProduct();
+  useEffect(()=>{
+    featureProductGet()
+  },[featureProductGet])
+
   
   return (
     <section className="py-16">

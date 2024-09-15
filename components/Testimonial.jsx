@@ -11,9 +11,16 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { useProductStore } from "@/usestore/store";
+import { useEffect } from "react";
 
 // Remove TypeScript types
-export default function TestimonialSlider({ testimonials }) {
+export default function TestimonialSlider() {
+  const {feedBack,fetchFeedback}= useProductStore()
+  useEffect(()=>{
+    fetchFeedback()
+
+  },[fetchFeedback])
   return (
     <>
       <section className="w-full py-4 mt-3">
@@ -30,22 +37,24 @@ export default function TestimonialSlider({ testimonials }) {
             ]}
           >
             <CarouselContent>
-              {testimonials && testimonials.map((testimonial, index) => (
+              {feedBack && feedBack.map((testimonial, index) => (
                 <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/2 ">
                   <div className="flex flex-col py-0 rounded justify-center sm:p-6 border border-gray-400">
                     
                     <div className="flex gap-3 items-center">
                       <div className="inline-flex rounded-full relative w-16 h-16">
-                        {testimonial.image && testimonial.image.url && 
-                          <Image
-                            loader={imageLoader}
-                            className="h-10 w-10 rounded-full border shadow-lg"
-                            layout="fill"
-                            alt={testimonial.name}
-                            src={testimonial.image.url}
-                            loading="lazy"
-                          />
-                        }
+                      {testimonial.image && testimonial.image.url ? (
+  <Image
+    loader={imageLoader}
+    className="h-10 w-10 rounded-full border shadow-lg"
+    layout="fill"
+    alt={testimonial.name}
+    src={testimonial.image.url}
+    loading="lazy"
+  />
+) : (
+  <div className="h-10 w-10 rounded-full bg-gray-200" />
+)}
                       </div>
                       <div>
                         <p className="text-sm font-semibold text-gray-900">

@@ -1,12 +1,15 @@
 import FeaturedProducts from '@/components/FeaturedProducts';
 import HeroSection from '@/components/HeroSection';
 import TestimonialSlider from '@/components/Testimonial';
-import { customareFeedback } from '@/lib/customareFeedback';
 import Link from 'next/link';
 import React from 'react';
 
+
+
+
+
 const Page = async () => {
-  const customarFeedback = await customareFeedback();
+
   
   return (
     <div className="">
@@ -19,7 +22,7 @@ const Page = async () => {
         <h2 className="text-3xl font-bold text-white text-shadow text-center themeColor1 border w-72 mx-auto py-1 text-md border-white px-2 border-dashed">
           Customer Feedback
         </h2>
-        <TestimonialSlider testimonials={customarFeedback} />
+        <TestimonialSlider />
       </div>
     </div>
   );

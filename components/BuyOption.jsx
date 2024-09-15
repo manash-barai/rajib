@@ -3,8 +3,9 @@ import React, { useState } from "react";
 import Bag from "./Bag";
 import Link from "next/link";
 import { useRouter } from "next/navigation"; 
+import { useProductStore } from "@/usestore/store";
 const BuyOption = ({ product }) => {
-
+  const {payment_product}=useProductStore()
   const router = useRouter(); 
   const [bagToggle, setBagToggle] = useState(false);
   const bagToggles = (e) => {
@@ -26,7 +27,9 @@ const BuyOption = ({ product }) => {
   const handleBuyNow = (e) => {
     e.stopPropagation();
     // Programmatically navigate to the payment page with product details
-    router.push(`/payment?name=${product.name}&price=${product.newPrice}&image=${product.image1.url}`);
+    const data=[{name:product.name ||"",price:product.newPrice ||"",image:product.image1.url || ""}]
+    payment_product(data)
+    router.push(`/payment`);
   };
 
 

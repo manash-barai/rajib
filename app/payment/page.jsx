@@ -2,12 +2,12 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { RiWhatsappFill } from "react-icons/ri";
-
+import { useProductStore } from "@/usestore/store";
 const Page = () => {
-  const name = searchParams.get("name");
-  const price = searchParams.get("price");
-  const image = searchParams.get("image");
+ 
 
+  const paymentProduct = useProductStore((state) => state.paymentProduct); // Fetch product details from store  console.log("paymentProduct",paymentProduct);
+  
   const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState({
     whatsappNumber: "",
@@ -43,22 +43,23 @@ const Page = () => {
 
   return (
     <div className="flex gap-10 w-auto mx-auto  px-32 py-9 justify-between h-[100vh]">
-      <div className="mt-14  flex flex-row   gap-3">
-        {image && (
-          <Image
-            src={image}
-            alt={name}
-            width={200}
-            height={200}
-            className="rounded border-0 h-48"
-          />
-        )}
-        <div>
-          <h2 className="text-lg font-bold"> Name :{name}</h2>
-          <p className="text-xl">Price: {price}/-</p>
-        </div>
-        {/* Add payment form or process here */}
-      </div>
+
+{paymentProduct.length!==0 && paymentProduct.map((e, i) => (
+  <div className="mt-14 flex flex-row gap-3" key={i}>
+    <Image
+      src={e.image}
+      alt={e.name}
+      width={200}
+      height={200}
+      className="rounded border-0 h-48"
+    />
+    <div>
+      <h2 className="text-lg font-bold">Name: {e.name && e.name}</h2>
+      <p className="text-xl">Price: {e.price && e.price}/-</p>
+    </div>
+  </div>
+))}
+
       <div className="py-5 ">
         {/* Progress Line */}
         <ul className="line flex  float-end gap-32 relative outline-offset-8">
