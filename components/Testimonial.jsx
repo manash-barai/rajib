@@ -15,12 +15,8 @@ import { useProductStore } from "@/usestore/store";
 import { useEffect } from "react";
 
 // Remove TypeScript types
-export default function TestimonialSlider() {
-  const {feedBack,fetchFeedback}= useProductStore()
-  useEffect(()=>{
-    fetchFeedback()
-
-  },[fetchFeedback])
+export default function TestimonialSlider({feedBack}) {
+ 
   return (
     <>
       <section className="w-full py-4 mt-3">
@@ -43,18 +39,16 @@ export default function TestimonialSlider() {
                     
                     <div className="flex gap-3 items-center">
                       <div className="inline-flex rounded-full relative w-16 h-16">
-                      {testimonial.image && testimonial.image.url ? (
-  <Image
-    loader={imageLoader}
-    className="h-10 w-10 rounded-full border shadow-lg"
-    layout="fill"
-    alt={testimonial.name}
-    src={testimonial.image.url}
-    loading="lazy"
-  />
-) : (
-  <div className="h-10 w-10 rounded-full bg-gray-200" />
-)}
+                        {testimonial.image && testimonial.image.url && 
+                          <Image
+                            loader={imageLoader}
+                            className="h-10 w-10 rounded-full border shadow-lg"
+                            layout="fill"
+                            alt={testimonial.name}
+                            src={testimonial.image.url}
+                            loading="lazy"
+                          />
+                        }
                       </div>
                       <div>
                         <p className="text-sm font-semibold text-gray-900">

@@ -95,23 +95,7 @@ export const useProductStore = create((set) => ({
     console.log('Feedback inserted:', feed);
   },
 
-  featureProductGet: async () => {
-    set({ loading: true });
-    try {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_DOMAIN}/api/feature-product`
-      );
-      if (!response.ok) {
-        throw new Error('Failed to fetch featured products');
-      }
-      const data = await response.json();
-      set({ featureProducts: data });
-    } catch (error) {
-      console.error('Error fetching featured products:', error.message);
-    } finally {
-      set({ loading: false });
-    }
-  },
+  
 
  
 }));

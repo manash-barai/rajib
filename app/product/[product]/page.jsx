@@ -5,12 +5,19 @@ import { CiShare2, CiDeliveryTruck } from "react-icons/ci";
 import Quentity from "@/components/Quentity";
 import BuyOption from "@/components/BuyOption";
 import SinglepageImage from "@/components/SinglepageImage";
+import fetchFeedback from "@/components/FeedBack";
 
 export async function singleProduct(product) {
-  try {
+
+ 
     const result = await fetch(
       `${process.env.NEXT_PUBLIC_DOMAIN}/api/singleProduct?id=${product}`,
-      { method: "GET" }
+      {
+        method: "GET",
+        next: {
+          revalidate: 60000, // Optional: Revalidate every 60 seconds
+        },
+      }
     );
 
     if (!result.ok) {
@@ -19,15 +26,13 @@ export async function singleProduct(product) {
 
     const data = await result.json();
     return data.singleProduct || null;
-  } catch (error) {
-    console.error("Error fetching single product:", error);
-    return null;
-  }
+  
 }
 
 const Page = async ({ params }) => {
   const { product } = params;
   const singleProducts = await singleProduct(product);
+  const feedbackData = await fetchFeedback();
 
   if (!singleProducts) {
     return <p>Product not found.</p>;
@@ -139,7 +144,7 @@ const Page = async ({ params }) => {
       </div>
 
       <div className="recent mt-11">
-        <TestimonialSlider />
+        <TestimonialSlider feedBack={feedbackData} />
       </div>
     </div>
   );
