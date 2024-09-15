@@ -35,7 +35,7 @@ const Bag = ({ bagToggle, bagToggles }) => {
     localStorage.setItem("cart", JSON.stringify(updatedCart));
   };
 
-  const pushToPayment = (e) => {
+  const pushToPayment = async(e) => {
     e.preventDefault();  // Prevent any default behavior
 
     // Collect all products and their quantities
@@ -48,7 +48,7 @@ const Bag = ({ bagToggle, bagToggles }) => {
     
     // Save the product details in local storage
     localStorage.setItem('paymentProduct', JSON.stringify(productsToSave));
-
+    await new Promise((resolve) => setTimeout(resolve, 300));
     // Always navigate to /payment
     router.push(`/payment`);
   };

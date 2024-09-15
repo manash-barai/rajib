@@ -248,25 +248,26 @@ const Page = () => {
                 <div className="mb-6">
                   <h3 className="text-lg font-semibold mb-3">Bill Details</h3>
                   <div className="flex justify-between mb-2">
-                    <span className="text-gray-700">Items - 2</span>
-                    <span className="text-gray-700">$100</span>
+                    {/* mmmmmmmmmmmmmmmmm */}
+                    <span className="text-gray-700">Total Items      </span>
+                    <span className="text-gray-700">{paymentProduct?.reduce((total, product) => total + product.quantity, 0)}   </span>
                   </div>
                   <div className="flex justify-between mb-2">
                     <span className="text-gray-700">Item Total Price</span>
-                    <span className="text-gray-700">$200</span>
+                    <span className="text-gray-700">{paymentProduct?.reduce((total, product) => total + product.price, 0)}</span>
                   </div>
                   <div className="flex justify-between mb-2">
                     <span className="text-gray-700">Sale Discount</span>
-                    <span className="text-gray-700">-$20</span>
+                    <span className="text-gray-700"> 0</span>
                   </div>
                   <div className="flex justify-between mb-2">
                     <span className="text-gray-700">Delivery Fee</span>
-                    <span className="text-gray-700">$10</span>
+                    <span className="text-gray-700">Free</span>
                   </div>
                   <hr className="my-4" />
                   <div className="flex justify-between font-bold text-lg">
                     <span>Total Amount</span>
-                    <span>$190</span>
+                    <span> {paymentProduct?.reduce((total, product) => total + product.price, 0)}</span>
                   </div>
                 </div>
 
