@@ -13,7 +13,7 @@ const Navbar = () => {
     setBagToggle(!bagToggle);
   };
   return (
-    <nav className="shadow themeColor1 text-white">
+    <nav className="shadow themeColor1 text-white px-3">
        <Bag bagToggle={bagToggle} bagToggles={bagToggles} />
       <div className="max-w-7xl mx-auto flex justify-between py-2 items-center">
         <div className="search min-w-84 flex items-center gap-5">
